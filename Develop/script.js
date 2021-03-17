@@ -139,37 +139,6 @@ function generatePassword() {
   );
 
   let confirmNumber = confirm("Do you want Number characters in your password");
-
-  if (
-    !confirmLowercase &&
-    !confirmUppercase &&
-    !confirmSpecialChar &&
-    !confirmNumber
-  ) {
-    alert(
-      "Your password must contain at least one special, numeric, lowercase, or uppercase character"
-    );
-    return;
-  }
-
-  const optionsArray = [];
-
-  //random maths floor etc
-
-  if (confirmLowercase) {
-    optionsArray.push(lowercaseArray);
-  }
-  if (confirmUppercase) {
-    optionsArray.push(uppercaseArray);
-  }
-  if (confirmSpecialChar) {
-    optionsArray.push(specialCharArray);
-  }
-  if (confirmNumber) {
-    optionsArray.push(numberCharArray);
-  }
-
-  const randomNumber = Math.floor(Math.random() * 26);
 }
 
 // Write password to the #password input
