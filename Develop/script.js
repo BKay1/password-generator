@@ -1,11 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//Declare function for generatePassword
+//Declare arrays in memory for lowercase, uppercase, special characters and numbers.
 
-//Declare arrays here for lowercase, uppercase, special characters and numbers.
-
-let lowercaseArray = [
+const lowercaseArray = [
   "a",
   "b",
   "c",
@@ -33,7 +31,7 @@ let lowercaseArray = [
   "y",
   "z",
 ];
-let uppercaseArray = [
+const uppercaseArray = [
   "A",
   "B",
   "C",
@@ -61,7 +59,8 @@ let uppercaseArray = [
   "Y",
   "Z",
 ];
-let specialcharArray = [
+
+const specialCharArray = [
   "!",
   "#",
   "$",
@@ -94,47 +93,83 @@ let specialcharArray = [
   "}",
   "~",
 ];
-let numbercharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-//["\""\ "\'" - recheck!!
-
-//Prompt user for passwordLength
-//if  less than <8 characters in length or more than >128 characters. Alert user to put in correct passwordLength.
-
-const passwordLength = prompt(
-  "How many characters would you like your password to contain?"
-);
-
-if (passwordLength < 8) {
-  alert("Your password must be at least 8 characters!");
-}
-if (passwordLength > 128) {
-  alert("Your password must be less than 128 characters!");
-} else {
-  //Prompt and confirm with user re password characters
-  let confirmLowercase = confirm(
-    "Do you want lowercase characters in your password"
-  );
-  let confirmUppercase = confirm(
-    "Do you want lowercase characters in your password"
-  );
-  let confirmSpecialChar = confirm(
-    "Do you want special characters in your password"
-  );
-  let confirmNumber = confirm("Do you want number characters in your password");
-}
+const numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 //Generate Password
 
-// Declare a new function on line 3
 function generatePassword() {
   // Create a variable to store our generated password
   var password = "";
+  //const passwordChar = "";
 
-  // Logic would go here
+  //Prompt user for passwordLength
+  //if  less than <8 characters in length or more than >128 characters. Alert user to put in correct passwordLength.
 
-  // Return our created password
-  return password;
+  let passwordLength = prompt(
+    "How many characters would you like your password to contain?"
+  );
+  passwordLength = parseInt(passwordLength);
+
+  if (!passwordLength) {
+    alert("Please add a numeric value");
+    return;
+  }
+
+  if (passwordLength < 8) {
+    alert("Your password must be at least 8 characters!");
+    return;
+  }
+  if (passwordLength > 128) {
+    alert("Your password must be less than 128 characters!");
+    return;
+  }
+
+  //Prompt and confirm with user re password characters
+  let confirmLowercase = confirm(
+    "Do you want Lowercase characters in your password"
+  );
+
+  let confirmUppercase = confirm(
+    "Do you want Uppercase characters in your password"
+  );
+
+  let confirmSpecialChar = confirm(
+    "Do you want Special characters in your password"
+  );
+
+  let confirmNumber = confirm("Do you want Number characters in your password");
+
+  if (
+    !confirmLowercase &&
+    !confirmUppercase &&
+    !confirmSpecialChar &&
+    !confirmNumber
+  ) {
+    alert(
+      "Your password must contain at least one special, numeric, lowercase, or uppercase character"
+    );
+    return;
+  }
+
+  const optionsArray = [];
+
+  //random maths floor etc
+
+  if (confirmLowercase) {
+    optionsArray.push(lowercaseArray);
+  }
+  if (confirmUppercase) {
+    optionsArray.push(uppercaseArray);
+  }
+  if (confirmSpecialChar) {
+    optionsArray.push(specialCharArray);
+  }
+  if (confirmNumber) {
+    optionsArray.push(numberCharArray);
+  }
+
+  const randomNumber = Math.floor(Math.random() * 26);
 }
 
 // Write password to the #password input
