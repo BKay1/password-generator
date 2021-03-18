@@ -99,9 +99,7 @@ const numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 //Generate Password
 
 function generatePassword() {
-  // Create a variable to store our generated password
-  var password = "";
-  //const passwordChar = "";
+  const passwordArray = [];
 
   //Prompt user for passwordLength
   //if  less than <8 characters in length or more than >128 characters. Alert user to put in correct passwordLength.
@@ -149,7 +147,7 @@ function generatePassword() {
     alert(
       "Your password must contain at least one special, numeric, lowercase, or uppercase character"
     );
-    return;
+    //return;
   }
 
   const optionsArray = [];
@@ -170,34 +168,29 @@ function generatePassword() {
   }
   //use math random/floor to generate a random password
 
-  const randomLowercase = Math.floor(Math.random(confirmLowercase) * 26);
+  for (let i = 0; i < passwordLength; i++) {
+    let randomArray =
+      optionsArray[Math.floor(Math.random() * optionsArray.length)];
+    let randomChar =
+      randomArray[Math.floor(Math.random() * randomArray.length)];
 
-  console.log(randomLowercase);
+    passwordArray.push(randomChar);
+  }
 
-  const randomUppercase = Math.floor(Math.random(confirmUppercase) * 26);
+  // Create a variable to store our generated password
 
-  //console.log(randomUppercase);
+  const password = passwordArray.join("");
 
-  const randomspecialChar = Math.floor(
-    Math.random(confirmSpecialChar) * specialCharArray.length
-  );
-
-  // console.log(randomspecialChar);
-
-  const randomNumber = Math.floor(Math.random(confirmNumber) * 10);
-
-  //console.log(randomNumber);
+  //return password
+  return password;
 }
-
-
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
