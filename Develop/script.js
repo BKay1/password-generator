@@ -168,9 +168,28 @@ function generatePassword() {
   if (confirmNumber) {
     optionsArray.push(numberCharArray);
   }
+  //use math random/floor to generate a random password
 
-  const randomNumber = Math.floor(Math.random() * 26);
+  const randomLowercase = Math.floor(Math.random(confirmLowercase) * 26);
+
+  console.log(randomLowercase);
+
+  const randomUppercase = Math.floor(Math.random(confirmUppercase) * 26);
+
+  //console.log(randomUppercase);
+
+  const randomspecialChar = Math.floor(
+    Math.random(confirmSpecialChar) * specialCharArray.length
+  );
+
+  // console.log(randomspecialChar);
+
+  const randomNumber = Math.floor(Math.random(confirmNumber) * 10);
+
+  //console.log(randomNumber);
 }
+
+
 
 // Write password to the #password input
 function writePassword() {
