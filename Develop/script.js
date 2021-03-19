@@ -96,7 +96,7 @@ const specialCharArray = [
 
 const numberCharArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-//Generate Password
+//Generate Password Function
 
 function generatePassword() {
   const passwordArray = [];
@@ -109,21 +109,23 @@ function generatePassword() {
   );
   passwordLength = parseInt(passwordLength);
 
+  //Alert if anything other than a numeric value is entered.
   if (!passwordLength) {
-    alert("Please add a numeric value");
+    alert("Please add a numeric value.");
     return;
   }
-
+  //Alerts if passwordLength is less than 8 characters or more than 128 characters.
   if (passwordLength < 8) {
     alert("Your password must be at least 8 characters!");
     return;
   }
+
   if (passwordLength > 128) {
     alert("Your password must be less than 128 characters!");
     return;
   }
 
-  //Prompt and confirm with user re password characters
+  //Prompt and confirm with user re password characters.
   let confirmLowercase = confirm(
     "Do you want Lowercase characters in your password"
   );
@@ -138,6 +140,7 @@ function generatePassword() {
 
   let confirmNumber = confirm("Do you want Number characters in your password");
 
+  //Alert if no character choices are made.
   if (
     !confirmLowercase &&
     !confirmUppercase &&
@@ -147,12 +150,11 @@ function generatePassword() {
     alert(
       "Your password must contain at least one special, numeric, lowercase, or uppercase character"
     );
-    //return;
   }
 
-  const optionsArray = [];
+  //The sections pushes each confirmed user choice into the password.
 
-  //random maths floor etc
+  const optionsArray = [];
 
   if (confirmLowercase) {
     optionsArray.push(lowercaseArray);
@@ -166,7 +168,8 @@ function generatePassword() {
   if (confirmNumber) {
     optionsArray.push(numberCharArray);
   }
-  //use math random/floor to generate a random password
+
+  //Generation of a random password.
 
   for (let i = 0; i < passwordLength; i++) {
     let randomArray =
