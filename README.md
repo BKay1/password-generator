@@ -20,7 +20,7 @@ Main Actions:
 
 Please note screen shots of working web app:
 
-Image 1 to show deployed application URL: ![hwimage1](./assets/../pic-of-deployed-application.pngpng)
+Image 1 to show deployed application URL: ![hwimage1](./assets/../pic-of-deployed-application.png)
 
 Image 2 to show generated password with no errors in console URL: ![hwimage1](./assets/images/../../pic-showing-generated-password-with-no-console-errors.png)
 
